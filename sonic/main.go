@@ -34,5 +34,4 @@ func main() {
 		return c.JSON(http.StatusOK, "ok!")
 	})
 	e.Start(":8080")
-	c
 }
