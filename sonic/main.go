@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"net/http"
 
 	"github.com/bytedance/sonic/decoder"
 	"github.com/bytedance/sonic/encoder"
@@ -28,4 +29,10 @@ func (j *JSONSerializer) Deserialize(c echo.Context, i interface{}) error {
 func main() {
 	e := echo.New()
 	e.JSONSerializer = &JSONSerializer{}
+
+	e.GET("/", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, "ok!")
+	})
+	e.Start(":8080")
+	c
 }
